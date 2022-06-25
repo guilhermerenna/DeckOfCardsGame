@@ -15,5 +15,4 @@ public class DeckofcardsApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(DeckofcardsApplication.class, args);
 	}
-
 }
