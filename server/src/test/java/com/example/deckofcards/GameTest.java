@@ -22,6 +22,6 @@ public class GameTest {
 		Game game = Json.fromJson(node, Game.class);
 		
 		assertEquals(game.getGameName(), "MikesGame");
-		assertEquals(game.getId(), 123456789);
+		assertEquals(game.getGameId(), 123456789);
 	}
 }
