@@ -1,0 +1,37 @@
+:root {
+    --primary-color-clear: #02af8f;
+    --primary-color: #005848;
+    --primary-color-dark: #012921;
+    --secondary-color: #274742;
+    --title-color: #000000;
+    --text-color: #669990;
+  }
+body{
+    background-color: #005848;
+    margin: 0px;
+    height: 100vh;
+}
+
+.shoe-and-players-empty {
+  width: 1620px;
+  display: flex;
+  justify-content: center;
+}
+  
+/*  body {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+  
+  .App-link {
+    color: #61dafb;
+  }
+  
+  body {
+    margin: 0%;
+  }*/
