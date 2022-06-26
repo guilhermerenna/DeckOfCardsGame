@@ -23,12 +23,15 @@ import com.spring.crud.demo.model.Game;
 import com.spring.crud.demo.model.GamesSingleton;
 import com.spring.crud.demo.model.Player;
 import com.spring.crud.demo.service.GameService;
+import com.spring.crud.demo.service.PlayerService;
+
+import io.swagger.v3.oas.annotations.Operation;
 
 @RestController
 @RequestMapping("/games")
 public class GameController {
-	@Autowired
-	private GameService service;
+	@Autowired private GameService service;
+	@Autowired private PlayerService playerService;
 	
 	@LogObjectAfter
     @GetMapping
@@ -82,6 +85,7 @@ public class GameController {
         return ResponseEntity.ok().body("Game "+id+" deleted successfully.");
     }  
     
+    @Operation(summary = "This will add a new deck to the game ID passed as a parameter")
     @LogObjectBefore
     @LogObjectAfter
     @GetMapping("/{id}/adddeck")
@@ -89,8 +93,18 @@ public class GameController {
     	Game game = service.findById(id);
     	if(game != null) return ResponseEntity.ok().body(game.addDeck());
     	else return ResponseEntity.unprocessableEntity().body(id);
+    }
+    
+    @LogObjectAfter
+    @GetMapping("/{gameId}/players")
+    public ResponseEntity<List<?>> findAllPlayers(@PathVariable int gameId) {
+    	Game game = service.findById(gameId);
+    	
+        List<?> list = game.getPlayers();
+        return ResponseEntity.ok().body(list);
     }    
     
+    @Operation(summary = "This will show the cards for a specific player ID.")
     @LogObjectAfter
     @GetMapping("/{id}/playerhand/{playerid}")
     public ResponseEntity<?> findById(@PathVariable int id, @PathVariable int playerid) {
@@ -101,6 +115,7 @@ public class GameController {
         return ResponseEntity.badRequest().body(game);
     }
     
+    @Operation(summary = "This will draw a card from the game ID and give it to PLAYERID.")
     @LogObjectAfter
     @GetMapping("/{id}/deal/{playerid}")
     public ResponseEntity<?> dealCard(@PathVariable int id, @PathVariable int playerid) {

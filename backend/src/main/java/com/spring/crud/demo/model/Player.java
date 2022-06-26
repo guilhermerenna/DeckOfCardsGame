@@ -15,8 +15,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.spring.crud.demo.model.card.Card;
+import com.spring.crud.demo.pojo.PlayerRequest;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -37,10 +39,18 @@ public class Player implements Serializable {
 	private String name;
 	private int points;	
 	
+	@JsonIgnore
 	@JsonBackReference
 	@ManyToOne(cascade= { CascadeType.ALL})
     @JoinColumn(name="game_id")
 	private Game game;
+	
+	public Player(PlayerRequest player, Game game) {
+		this.id = player.getId();
+		this.name = player.getName();
+		this.points = player.getPoints();
+		this.game = game;
+	}
 	
 	public void giveCard(Card card) {
 		GamesSingleton.dealCardToPlayer(id, card);
