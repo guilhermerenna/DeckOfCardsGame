@@ -3,25 +3,23 @@ import Game from './Game/Game';
 import { FiPlusCircle } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import api from '../../../services/api';
+import './Games.css'
 
-function newGame(gameName: string) {
-  if(gameName == '') gameName = 'New Game';
+function newGame(name: string) {
+  if(name == '') name = 'New Game';
 
   api.post('games',
   {
-    gameName: gameName
+    name: name
   }).then(function (error) {
     console.log(error);
-  })
-
-  Games();
-  
+  })  
 }
 
 // array, object: manually inform var type
 interface Game {
   id: number;
-  gameName: string;
+  name: string;
 }
 
 const Games = () => {
@@ -35,24 +33,27 @@ const Games = () => {
   [] //no parameter passed. This means the method above will be called only once
   );
 
+  const input = document.getElementById('gameName') as HTMLInputElement | null;
+
+  // input?.addEventListener("keypress", function(event) {
+  //     // If the user presses the "Enter" key on the keyboard
+  //     if (event.key === "Enter") {
+  //       // Cancel the default action, if needed
+  //       event.preventDefault();
+  //       // Trigger the newGame function
+        
+  //     }
+  // });
+
   return (
-      <div className='games'>
+      <div className='games-wrapper'>
         <div className="games-title">
           Games: 
-        <Link onClick={() => 
-        {
-          const input = document.getElementById('gameName') as HTMLInputElement | null;
-          const gameNameValue = input?.value || "New Game";
-          newGame(gameNameValue)
-        }
-        } to="/games">
-          <FiPlusCircle />
-        </Link>
         </div>
         <ul className='games-grid'>
           {games.map(game => (
             <li key={game.id}>
-              <Game id={game.id} gameName={game.gameName} />
+              <Game id={game.id} name={game.name} />
             </li>
           ))}
         </ul>
@@ -61,7 +62,18 @@ const Games = () => {
             type="text" 
             name="gameName" 
             id="gameName" 
+            placeholder="New Game"
           />
+        <Link onClick={() => 
+        {
+          const input = document.getElementById('gameName') as HTMLInputElement | null;
+          const gameNameValue = input?.value || "New Game";
+          newGame(gameNameValue);
+          Games();
+        }
+        } to="/games"> &nbsp;&nbsp;
+          <FiPlusCircle />
+        </Link>
         </div>
       </div>
   );

@@ -13,7 +13,10 @@ function App() {
   return (
     <>
       <Router>
+        <div className="App">
         <Home />
+
+        </div>
       </Router>
     </>
   );
