@@ -5,6 +5,7 @@ import { FiX } from 'react-icons/fi';
 import Games from '../Games';
 import api from '../../../../services/api';
 import './Game.css'
+import Players from '../../../ShoeAndPlayers/Players'
 
 interface GameProps {
   id: number;
@@ -32,7 +33,9 @@ function parseGameResponse(incomingResponse: string) {
 const Game: React.FC<GameProps> = (props) => {
   return (
       <div className='game'>
-        <Link to={'/games/'+ props.id}>
+        <Link to={'/players/'+ props.id} onClick={() => {
+          Players({gameId: props.id});
+        }}>
           <span className='game-title'>ID {props.id} - {props.name}</span></Link>
           <Link className='deleteIcon' onClick={() => {
             deleteGame(props.id);

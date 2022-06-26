@@ -3,3 +3,7 @@
     flex-direction: column;
     margin-left: 20px;
 }
+
+.remove-player-icon {
+    color: red;
+}

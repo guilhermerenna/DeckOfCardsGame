@@ -49,7 +49,7 @@ const Players: React.FC<PlayersProps> = (props) => {
                     newPlayer(playerNameValue, props.gameId);
                     Players(props);
                     }
-                    } to="/games"> &nbsp;&nbsp;
+                    } to="/players"> &nbsp;&nbsp;
                 <FiPlusCircle />
                 </Link>
                 </div>
@@ -61,9 +61,11 @@ const Players: React.FC<PlayersProps> = (props) => {
 function newPlayer(name: string, gameId: number) {
     if(name == '') name = 'New Player';
   
-    api.post('games',
+    api.post('players',
     {
-      name: name
+      name: name,
+      game_id: gameId,
+      points: 0
     }).then(function (error) {
       console.log(error);
     })  
