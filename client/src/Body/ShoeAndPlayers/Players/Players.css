@@ -10,6 +10,10 @@
     overflow: auto;
 }
 
+.players-grid {
+    padding: 10px;
+}
+
 .player-cards {
     display: flex;
     flex-direction: column;

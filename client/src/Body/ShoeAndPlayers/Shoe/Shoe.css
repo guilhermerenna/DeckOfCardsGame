@@ -1,0 +1,26 @@
+.shoe {
+    display: flex;
+    flex-direction: row;
+    max-width: 100vh;
+    overflow: auto;
+}
+
+.shoe-summary-grid {
+    margin-left: 10px;
+    min-width: 200px;
+}
+
+.shoe-card-list {
+    display: flex;
+    flex-direction: row;
+}
+
+.shoe-card-list-red {
+    margin-left: 20px;
+    color: red;
+}
+
+.shoe-card-list-black {
+    margin-left: 20px;
+    color: black;
+}
