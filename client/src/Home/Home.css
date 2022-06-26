@@ -4,12 +4,13 @@
     --primary-color-dark: #012921;
     --secondary-color: #274742;
     --title-color: #000000;
-    --text-color: #669990;
+    --text-color: #ffffff;
   }
 body{
-    background-color: #005848;
+    background-color: var(--primary-color-dark);
     margin: 0px;
     height: 100vh;
+    color: var(--text-color);
 }
 
 .shoe-and-players-empty {

@@ -1,0 +1,24 @@
+.games-wrapper{
+}
+
+.games-title {
+    display: flex;
+    align-items: center;
+    min-height: 10px;
+    background-color: var(--primary-color-dark);
+    
+}
+.game {
+    display: flex;
+    align-items: center;
+}
+
+#modal form .field {
+	display: flex;
+    align-items: center;
+    min-height: 10px;
+}
+
+.delete-icon {
+    color: red;
+}

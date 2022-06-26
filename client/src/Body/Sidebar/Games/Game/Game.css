@@ -1,0 +1,12 @@
+.deleteIcon {
+    margin-left: 5px;
+}
+
+.game-title {
+    color: var(--text-color);
+}
+
+a:link, a:visited {
+    color: var(--text-color);
+    text-decoration: none;
+}

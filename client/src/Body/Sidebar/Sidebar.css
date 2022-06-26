@@ -8,17 +8,3 @@
 .undealtDecks {
     height: 50px;
 }
-
-.games-title {
-    justify-content: center;
-    min-height: 10px;
-    background-color: var(--primary-color-dark);
-}
-
-.game {
-    margin-left: 5px;
-}
-
-#modal form .field {
-	display: flex;
-}
