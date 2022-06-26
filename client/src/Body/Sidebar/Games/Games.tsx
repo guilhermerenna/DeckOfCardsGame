@@ -35,16 +35,6 @@ const Games = () => {
 
   const input = document.getElementById('gameName') as HTMLInputElement | null;
 
-  // input?.addEventListener("keypress", function(event) {
-  //     // If the user presses the "Enter" key on the keyboard
-  //     if (event.key === "Enter") {
-  //       // Cancel the default action, if needed
-  //       event.preventDefault();
-  //       // Trigger the newGame function
-        
-  //     }
-  // });
-
   return (
       <div className='games-wrapper'>
         <div className="games-title">

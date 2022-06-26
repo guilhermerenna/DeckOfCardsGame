@@ -1,0 +1,42 @@
+.wrapper {
+    display: flex;
+    background-color: white;
+    width: 115px;
+    height: 150px;
+    justify-content: space-between;
+    margin: 5px;
+    border-radius: 0.5em;
+}
+
+.red {
+    color: red;
+}
+
+.black {
+    color: black;
+}
+
+.cvalue {
+    font-size: 30px;
+}
+
+.top-left {
+    padding-left: 10px;
+}
+
+.bottom-right {
+    display: flex;
+    align-self: flex-end;
+    transform: rotate(180deg);
+    margin-right: 10px;
+}
+
+.symbols {
+    display: flex;
+    align-self: center;
+    flex-direction: column;
+}
+
+.symbol {
+    font-size: 60px;
+}
