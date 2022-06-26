@@ -1,0 +1,23 @@
+.players-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.players-summary {
+    display: flex;
+    flex-direction: column;
+    max-height: calc(250px);
+    overflow: auto;
+}
+
+.player-cards {
+    display: flex;
+    flex-direction: column;
+}
+
+.cards-summary{
+    display: flex;
+    flex-direction: row;
+    max-width: 100vh;
+    overflow: auto;
+}
