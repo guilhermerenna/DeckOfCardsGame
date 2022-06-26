@@ -1,7 +1,9 @@
 import React from 'react';
 import './Shoe.css';
 
-interface SuitListingProps;
+interface SuitListingProps {
+    
+}
 
 function SuitListing() {
   return (
