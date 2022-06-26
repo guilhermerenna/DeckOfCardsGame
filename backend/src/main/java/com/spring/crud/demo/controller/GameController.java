@@ -31,7 +31,6 @@ import io.swagger.v3.oas.annotations.Operation;
 @RequestMapping("/games")
 public class GameController {
 	@Autowired private GameService service;
-	@Autowired private PlayerService playerService;
 	
 	@LogObjectAfter
     @GetMapping
@@ -83,7 +82,31 @@ public class GameController {
     public ResponseEntity<?> delete(@PathVariable int id) {
         service.delete(id);
         return ResponseEntity.ok().body("Game "+id+" deleted successfully.");
-    }  
+    }
+    
+    @Operation(summary = "This will return the count of all the cards for a specific suit in the Game ID")
+    @LogObjectBefore
+    @LogObjectAfter
+    @GetMapping("/{id}/listsuit/{suit}")
+    public ResponseEntity<?> getSuitListing(@PathVariable int id, @PathVariable String suit) {
+    	return ResponseEntity.ok(GamesSingleton.getShoe(id).getSuitListing(suit.toLowerCase().charAt(0)));
+    }
+    
+    @Operation(summary = "This will return the count how many cards of one suit are available in the Game ID")
+    @LogObjectBefore
+    @LogObjectAfter
+    @GetMapping("/{id}/countsuit/{suit}")
+    public ResponseEntity<?> getSuitCount(@PathVariable int id, @PathVariable String suit) {
+    	return ResponseEntity.ok(GamesSingleton.getShoe(id).getCountSuit(suit));
+    }
+    
+    @Operation(summary = "This will shuffle the shoe belonging to the Game ID")
+    @LogObjectBefore
+    @LogObjectAfter
+    @GetMapping("/{id}/shuffle")
+    public ResponseEntity<?> shuffle(@PathVariable int id) {
+    	return ResponseEntity.ok(GamesSingleton.shuffle(id));
+    }
     
     @Operation(summary = "This will add a new deck to the game ID passed as a parameter")
     @LogObjectBefore

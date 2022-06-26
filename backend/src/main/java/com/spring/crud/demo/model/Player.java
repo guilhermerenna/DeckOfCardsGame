@@ -39,7 +39,6 @@ public class Player implements Serializable {
 	private String name;
 	private int points;	
 	
-	@JsonIgnore
 	@JsonBackReference
 	@ManyToOne(cascade= { CascadeType.ALL})
     @JoinColumn(name="game_id")
