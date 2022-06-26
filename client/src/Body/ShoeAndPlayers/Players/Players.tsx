@@ -22,6 +22,7 @@ const Players: React.FC<PlayersProps> = (props) => {
 
     useEffect(() => {
         api.get('games/' + props.gameId + '/players').then(response => {
+            console.log("Players data:");
             console.log(response.data);
             setPlayers(response.data);
         })

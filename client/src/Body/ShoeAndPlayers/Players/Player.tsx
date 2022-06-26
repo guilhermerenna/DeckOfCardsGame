@@ -3,7 +3,7 @@ import { FiX } from 'react-icons/fi'
 import { GiCardDraw } from 'react-icons/gi'
 import { CgCardSpades } from 'react-icons/cg'
 import { Link } from 'react-router-dom';
-import api from '../../../services/api'
+import api from '../../../services/api';
 import Players from './Players';
 
 interface PlayerProps {
