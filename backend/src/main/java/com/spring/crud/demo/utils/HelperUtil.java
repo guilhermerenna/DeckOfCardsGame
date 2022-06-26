@@ -17,13 +17,13 @@ public class HelperUtil {
     	
     	Game g1 = Game.builder().name("Mikes Game2").build();
     	
-    	Player p1 = Player.builder().name("Guilherme").points(10).game(g1).build();
-    	Player p2 = Player.builder().name("Adriana").points(10).game(g1).build();
+    	Player p1 = Player.builder().name("Guilherme").points(0).game(g1).build();
+    	Player p2 = Player.builder().name("Adriana").points(0).game(g1).build();
     	
     	List<Player> playersG1 = new ArrayList<Player>();
     	playersG1.add(p1);
     	playersG1.add(p2);
-    	playersG1.add(Player.builder().name("Mike").points(5).game(g1).build());
+    	playersG1.add(Player.builder().name("Mike").points(0).game(g1).build());
     	g1.setPlayers(playersG1);
     	
     	List<Game> games = Arrays.asList( 

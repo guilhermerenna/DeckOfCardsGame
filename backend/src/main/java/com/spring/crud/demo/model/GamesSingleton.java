@@ -3,10 +3,9 @@ package com.spring.crud.demo.model;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import org.springframework.boot.web.servlet.server.Session;
-
 import com.spring.crud.demo.exception.EmptyShoeException;
 import com.spring.crud.demo.model.card.Card;
+import com.spring.crud.demo.model.card.SuitListing;
 
 public class GamesSingleton {
 	private static HashMap<Integer,Shoe> shoes = new HashMap<Integer,Shoe>();
@@ -16,6 +15,11 @@ public class GamesSingleton {
 		if(shoes.get(gameId) == null) 
 			shoes.put(gameId, new Shoe()); 
 		return shoes.get(gameId);
+	}
+	
+	public static int shuffle(int gameId) {
+		shoes.get(gameId).shuffle();
+		return shoes.get(gameId).getSize();
 	}
 	
 	public static ArrayList<Card> getHand(int playerId) {
@@ -48,6 +52,10 @@ public class GamesSingleton {
 		hands.get(playerid).add(drawnCard);
 		// return drawnCard;
 		return hands.get(playerid);
+	}
+	
+	public static SuitListing getSuitListing(int gameId, char suit) {
+		return getShoe(gameId).getSuitListing(suit); 
 	}
 
 	public static Card drawCard(int gameId) throws EmptyShoeException {
