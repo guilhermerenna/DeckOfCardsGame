@@ -1,7 +1,7 @@
 import React from 'react';
 import './ShoeAndPlayers.css';
-import Shoe from './Shoe';
-import Players from './Players';
+import Shoe from './Shoe/Shoe';
+import Players from './Players/Players';
 
 function ShoeAndPlayers() {
   

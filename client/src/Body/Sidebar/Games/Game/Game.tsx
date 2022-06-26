@@ -5,7 +5,7 @@ import { FiX } from 'react-icons/fi';
 import Games from '../Games';
 import api from '../../../../services/api';
 import './Game.css'
-import Players from '../../../ShoeAndPlayers/Players'
+import Players from '../../../ShoeAndPlayers/Players/Players'
 
 interface GameProps {
   id: number;
