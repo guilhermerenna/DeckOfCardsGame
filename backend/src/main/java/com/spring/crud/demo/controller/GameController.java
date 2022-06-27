@@ -22,6 +22,8 @@ import com.spring.crud.demo.exception.EmptyShoeException;
 import com.spring.crud.demo.model.Game;
 import com.spring.crud.demo.model.GamesSingleton;
 import com.spring.crud.demo.model.Player;
+import com.spring.crud.demo.model.card.Card;
+import com.spring.crud.demo.pojo.PlayerRequest;
 import com.spring.crud.demo.service.GameService;
 import com.spring.crud.demo.service.PlayerService;
 
@@ -31,6 +33,7 @@ import io.swagger.v3.oas.annotations.Operation;
 @RequestMapping("/games")
 public class GameController {
 	@Autowired private GameService service;
+	@Autowired private PlayerService playerService;
 	
 	@LogObjectAfter
     @GetMapping
@@ -143,7 +146,11 @@ public class GameController {
     @GetMapping("/{id}/deal/{playerid}")
     public ResponseEntity<?> dealCard(@PathVariable int id, @PathVariable int playerid) {
     	try {
-			return ResponseEntity.ok(GamesSingleton.dealCardFromDeckToPlayer(id, playerid));
+	    	Card drawnCard = GamesSingleton.dealCardFromDeckToPlayer(id, playerid);
+	    	Player player = playerService.findById(playerid);
+	    	player.setPoints(player.getPoints() + drawnCard.getCvalue()); 
+	    	playerService.update(player.getId(), player);
+			return ResponseEntity.ok(player);
 		} catch (EmptyShoeException e1) {
 			return ResponseEntity.badRequest().body("EmptyShoeException for game "+id);
 		}
