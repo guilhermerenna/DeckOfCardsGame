@@ -1,6 +1,8 @@
 package com.spring.crud.demo.model;
 
 import java.io.Serializable;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -51,12 +53,15 @@ public class Game implements Serializable {
 		return GamesSingleton.addNewDeck(this.id);
 	}
 	
-//	@JsonManagedReference
-//	@OneToMany( fetch = FetchType.LAZY, mappedBy = "game", 
-//		cascade = {
-//			CascadeType.MERGE,
-//			CascadeType.PERSIST,
-//			CascadeType.REMOVE
-//	})
-//	private List<Card> shoe;
+	public List<Player> getPlayers() {
+		Collections.sort(this.players, new PlayerComparator());
+		return this.players;
+	}
+}
+
+class PlayerComparator implements Comparator<Player> {
+	@Override
+	public int compare(Player p1, Player p2) {
+		return p2.getPoints() - p1.getPoints();
+	}
 }

@@ -69,5 +69,5 @@ public class PlayerController {
         service.delete(playerId);
         System.out.println("Deleted player "+playerId);
         return ResponseEntity.ok().body("Player "+playerId+" deleted successfully.");
-    }  
+    }
 }

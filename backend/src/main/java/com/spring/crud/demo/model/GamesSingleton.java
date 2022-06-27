@@ -46,12 +46,12 @@ public class GamesSingleton {
 		player.giveCard(getShoe(gameId).drawCard());
 	}
 	
-	public static ArrayList<Card> dealCardFromDeckToPlayer(int gameId, int playerid) throws EmptyShoeException {
+	public static Card dealCardFromDeckToPlayer(int gameId, int playerid) throws EmptyShoeException {
 		if(hands.get(playerid) == null) hands.put(playerid, new ArrayList<Card>());
 		Card drawnCard = getShoe(gameId).drawCard();
 		hands.get(playerid).add(drawnCard);
 		// return drawnCard;
-		return hands.get(playerid);
+		return drawnCard;
 	}
 	
 	public static SuitListing getSuitListing(int gameId, char suit) {
