@@ -23,7 +23,6 @@ import com.spring.crud.demo.model.Game;
 import com.spring.crud.demo.model.GamesSingleton;
 import com.spring.crud.demo.model.Player;
 import com.spring.crud.demo.model.card.Card;
-import com.spring.crud.demo.pojo.PlayerRequest;
 import com.spring.crud.demo.service.GameService;
 import com.spring.crud.demo.service.PlayerService;
 
