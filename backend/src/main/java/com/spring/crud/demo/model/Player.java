@@ -2,21 +2,16 @@ package com.spring.crud.demo.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.spring.crud.demo.model.card.Card;
 import com.spring.crud.demo.pojo.PlayerRequest;
 
@@ -32,6 +27,8 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table
 public class Player implements Serializable {
+	private static final long serialVersionUID = 3403521639626081520L;
+
 	@Id
 	@GeneratedValue
 	private int id;
