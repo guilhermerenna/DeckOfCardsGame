@@ -38,7 +38,7 @@ const Games = () => {
   return (
       <div className='games-wrapper'>
         <div className="games-title">
-          Games: 
+          <h3>Games: </h3>
         </div>
         <ul className='games-grid'>
           {games.map(game => (
@@ -61,7 +61,7 @@ const Games = () => {
           newGame(gameNameValue);
           Games();
         }
-        } to="/games"> &nbsp;&nbsp;
+        } to={{}}> &nbsp;&nbsp;
           <FiPlusCircle />
         </Link>
         </div>
