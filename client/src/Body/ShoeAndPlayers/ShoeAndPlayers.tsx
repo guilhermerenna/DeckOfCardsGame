@@ -1,17 +1,32 @@
-import React from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import './ShoeAndPlayers.css';
 import Shoe from './Shoe/Shoe';
 import Players from './Players/Players';
+import { Route, Routes } from 'react-router-dom';
+import ShoeAndPlayersEmpty from './ShoeAndPlayersEmpty';
 
-function ShoeAndPlayers() {
-  
+const ShoeAndPlayers = () => {
+
   return (
-      <div>
-        <div className='shoeAndPlayers'>
+    <Routes>
+      <Route path='/games/:gameId' element={
+        <>
           <Shoe />
-          <Players gameId={2} />
-        </div>
-      </div>
+          <Players />
+        </>
+      }></Route>
+      <Route path='/games/:gameId/players/:playerId' element={
+        <>
+          <Shoe />
+          <Players />
+        </>
+      }></Route>
+      <Route path='/*' element={
+        <>
+          <ShoeAndPlayersEmpty />
+        </>
+      }></Route>
+    </Routes>
   );
 }
 

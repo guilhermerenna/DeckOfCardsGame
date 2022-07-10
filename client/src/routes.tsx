@@ -4,7 +4,7 @@ import ShoeAndPlayers from './Body/ShoeAndPlayers/ShoeAndPlayers';
 
 import Home from './Home/Home';
 
-const Routes = () => {
+const Routes = (gameId: number) => {
     return (
         <>
             <Home />

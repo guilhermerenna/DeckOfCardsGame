@@ -6,6 +6,8 @@ import Games from '../Games';
 import api from '../../../../services/api';
 import './Game.css'
 import Players from '../../../ShoeAndPlayers/Players/Players'
+import ShoeAndPlayers from '../../../ShoeAndPlayers/ShoeAndPlayers';
+
 
 interface GameProps {
   id: number;
@@ -30,16 +32,23 @@ function parseGameResponse(incomingResponse: string) {
   return incomingResponse;
 }
 
+const currentPlayer = {
+  id: 3,
+  name: "Guilherme",
+  points: 0,
+  gameId: 2
+}
+
 const Game: React.FC<GameProps> = (props) => {
   return (
       <div className='game'>
-        <Link to={'/players/'+ props.id} onClick={() => {
-          Players({gameId: props.id});
+        <Link to={'/games/'+ props.id} onClick={() => {
+          Players();
         }}>
           <span className='game-title'>ID {props.id} - {props.name}</span></Link>
           <Link className='deleteIcon' onClick={() => {
             deleteGame(props.id);
-            Games();
+            ShoeAndPlayers();
           }} to={'/games'}>
             <FiX className='delete-icon'/>
             </Link>

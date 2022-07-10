@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import api from '../../../services/api';
-import { Link } from 'react-router-dom';
+import { Link, Route, Routes, useParams } from 'react-router-dom';
 import Player from './Player';
 import { FiPlusCircle } from 'react-icons/fi';
 import PlayerHand from './Cards/PlayerHand';
 import './Players.css'
-
-interface PlayersProps {
-    gameId: number;
-}
 
 interface Player {
     id: number;
@@ -17,11 +13,17 @@ interface Player {
     gameId: number;
 }
 
-const Players: React.FC<PlayersProps> = (props) => {
+const Players = () => {
+    const{ gameId, playerId } = useParams();
+    const gameIdNumber = parseInt(gameId || '0');
+    console.log(window.location.pathname + ' -- Game ' + gameId + ' , player ' + playerId);
+
     const[playersData, setPlayers] = useState<Player[]>([]);
 
     useEffect(() => {
-        api.get('games/' + props.gameId + '/players').then(response => {
+        if(gameIdNumber != 0)
+        console.log('Getting players...');
+        api.get('games/' + gameIdNumber + '/players').then(response => {
             console.log("Players data:");
             console.log(response.data);
             setPlayers(response.data);
@@ -29,18 +31,18 @@ const Players: React.FC<PlayersProps> = (props) => {
     },
     [] //no parameter passed. This means the method above will be called only once
     )
-        
-    console.log(playersData);
+
     return (
         <div className='players-wrapper'>
             <div className='players-summary'>
                 <h3>Players: </h3>
-                <ul className="players-grid">
+                <table>
                     {
                         playersData.map(player => (
-                        <Player id={player.id} name={player.name} points={player.points} gameId={player.gameId} />
-                    ))}
-                </ul>
+                            <Player id={player.id} name={player.name} points={player.points} gameId={gameIdNumber} />
+                    ))
+                }
+                </table>
                 <div className="field">
                     <input 
                         type="text" 
@@ -52,17 +54,17 @@ const Players: React.FC<PlayersProps> = (props) => {
                             () => {
                                 const input = document.getElementById('playerName') as HTMLInputElement | null;
                                 const playerNameValue = input?.value || "New Player";
-                                newPlayer(playerNameValue, props.gameId);
-                                Players(props);
+                                newPlayer(playerNameValue, gameIdNumber);
+                                Players();
                             } 
-                        } to="/players"
+                        } to={{}}
                         > &nbsp;&nbsp;
                         <FiPlusCircle />
                     </Link>
                 </div>
             </div>
             <div className="player-cards">
-                <PlayerHand gameId={props.gameId} playerId={3} playerName='Guilherme' />
+                <PlayerHand />
             </div>
         </div>
     );
